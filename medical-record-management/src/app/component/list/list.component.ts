@@ -32,4 +32,10 @@ export class ListComponent implements OnInit {
       alert('Xóa Thanh Công');
     });
   }
+
+  searchReason(reason: string) {
+    this.medicalRecordSever.searchReason(reason).subscribe(next => {
+      this.medicalRecordList = next;
+    })
+  }
 }

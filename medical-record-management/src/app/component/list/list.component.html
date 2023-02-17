@@ -4,13 +4,9 @@
     <button class="btn btn-primary ms-2 mb-1" routerLink="/create">Thêm mới bệnh án</button>
   </div>
   <div class="d-flex col-lg-4 mb-1">
-    <input class="form-control me-2 justify-content-between" type="text" placeholder="Nhập tên bệnh nh"
+    <input #reason class="form-control me-2 justify-content-between" type="text" placeholder="Lý do nhập viện"
            aria-label="Search" style="width: 150px">
-    <select name="customer-type" class="me-1">
-      <option value="">Chọn đi</option>
-      <option></option>
-    </select>
-    <button class="btn btn-success btn-outline-warning" type="submit">Tìm Kiếm</button>
+    <button class="btn btn-success btn-outline-warning" (click)="searchReason(reason.value)">Tìm Kiếm</button>
   </div>
 </div>
 
