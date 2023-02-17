@@ -1,0 +1,41 @@
+<h1>Cập Nhật Bệnh Án</h1>
+<form [formGroup]="form" (ngSubmit)="create()">
+  <table>
+    <tr>
+      <td>Mã Bệnh Án</td>
+      <td><input type="text" formControlName="code"></td>
+    </tr>
+    <tr>
+      <td>Bệnh Nhân</td>
+      <td><select formControlName="patient">
+        <option *ngFor="let patient of patientList" [ngValue]="patient">{{patient.name}}</option>
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Ngày Nhập Viện</td>
+      <td><input type="date" formControlName="startDay"></td>
+    </tr>
+    <tr>
+      <td>Ngày ra viện</td>
+      <td><input type="date" formControlName="endDay"></td>
+    </tr>
+    <tr>
+      <td>Lý do nhập viện</td>
+      <td><input type="text" formControlName="reason"></td>
+    </tr>
+    <tr>
+      <td>Phương pháp</td>
+      <td><input type="text" formControlName="treatmentOption"></td>
+    </tr>
+    <tr>
+      <td>Bác sĩ điều trị</td>
+      <td><input type="text" formControlName="doctor"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button class="btn btn-danger mb-1 mt-1">Lưu</button></td>
+    </tr>
+  </table>
+</form>
+
