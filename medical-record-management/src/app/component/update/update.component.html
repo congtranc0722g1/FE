@@ -1,5 +1,5 @@
 <h1>Cập Nhật Bệnh Án</h1>
-<form [formGroup]="form" (ngSubmit)="create()">
+<form [formGroup]="form" (ngSubmit)="update()">
   <table>
     <tr>
       <td>Mã Bệnh Án</td>
@@ -7,7 +7,7 @@
     </tr>
     <tr>
       <td>Bệnh Nhân</td>
-      <td><select formControlName="patient">
+      <td><select formControlName="patient" [compareWith]="compareWith">
         <option *ngFor="let patient of patientList" [ngValue]="patient">{{patient.name}}</option>
       </select>
       </td>
@@ -40,4 +40,5 @@
     </tr>
   </table>
 </form>
+
 

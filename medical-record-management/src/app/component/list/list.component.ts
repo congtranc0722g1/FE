@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MedicalRecord} from '../../model/medical-record';
 import {MedicalRecordService} from '../../service/medical-record.service';
 
@@ -29,7 +29,7 @@ export class ListComponent implements OnInit {
   delete() {
     this.medicalRecordSever.delete(this.temp.id).subscribe(next => {
       this.getAll();
-      alert("Xóa Thanh Công")
-    })
+      alert('Xóa Thanh Công');
+    });
   }
 }
