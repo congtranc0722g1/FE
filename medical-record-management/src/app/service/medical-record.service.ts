@@ -10,8 +10,8 @@ export class MedicalRecordService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAll() {
-    return this.httpClient.get<MedicalRecord[]>('http://localhost:8080/list');
+  getAll(page: number) {
+    return this.httpClient.get<any>('http://localhost:8080/list/?page=' + page);
   }
 
 
@@ -32,6 +32,6 @@ export class MedicalRecordService {
   }
 
   searchReason(reason: string) {
-    return this.httpClient.get<MedicalRecord[]>('http://localhost:8080/search?reason_like=' + reason)
+    return this.httpClient.get<MedicalRecord[]>('http://localhost:8080/search' + reason)
   }
 }
