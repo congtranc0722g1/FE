@@ -11,7 +11,7 @@ export class ListComponent implements OnInit {
   totalPages: number;
   pages: number[];
 
-  page: number;
+  page = 0;
 
   medicalRecordList: MedicalRecord[] = [];
 
@@ -40,7 +40,7 @@ export class ListComponent implements OnInit {
   }
 
   searchReason(reason: string) {
-    this.medicalRecordSever.searchReason(reason).subscribe(next => {
+    this.medicalRecordSever.searchReason(this.page, reason).subscribe(next => {
       this.medicalRecordList = next;
     });
   }

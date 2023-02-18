@@ -31,7 +31,7 @@ export class MedicalRecordService {
     return this.httpClient.put('http://localhost:8080/update', medicalRecord);
   }
 
-  searchReason(reason: string) {
-    return this.httpClient.get<MedicalRecord[]>('http://localhost:8080/search' + reason)
+  searchReason(page: number, reason: string) {
+    return this.httpClient.get<any>('http://localhost:8080/search?page=' + page  + '&medicalRecord.reason_like=' + reason)
   }
 }
