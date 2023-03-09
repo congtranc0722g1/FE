@@ -4,9 +4,11 @@
     <button class="btn btn-primary ms-2 mb-1" routerLink="/create">Thêm mới bệnh án</button>
   </div>
   <div class="d-flex col-lg-4 mb-1">
-    <input #reason class="form-control me-2 justify-content-between" type="text" placeholder="Lý do nhập viện"
+    <input [(ngModel)]="reason" class="form-control me-2 justify-content-between" type="text" placeholder="Lý do nhập viện"
            aria-label="Search" style="width: 150px">
-    <button class="btn btn-success btn-outline-warning" (click)="searchReason(reason.value)">Tìm Kiếm</button>
+    <input [(ngModel)]="name" class="form-control me-2 justify-content-between" type="text" placeholder="Tên bệnh nhân"
+           aria-label="Search" style="width: 150px">
+    <button class="btn btn-success btn-outline-warning" (click)="getAll(0)">Tìm Kiếm</button>
   </div>
 </div>
 
@@ -29,7 +31,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let medicalRecord of medicalRecordList; index as i">
-    <td>{{i}}</td>
+    <td>{{i+ 1}}</td>
     <td>{{medicalRecord.code}}</td>
     <td>{{medicalRecord.patient.code}}</td>
     <td>{{medicalRecord.patient.name}}</td>
@@ -47,15 +49,9 @@
       </button>
     </td>
   </tr>
+  <p *ngIf="medicalRecordList.length == 0" class="text-center text-danger">Không có gì</p>
   </tbody>
 </table>
-
-<div *ngIf="totalPages > 1">
-  <button *ngFor="let pageNumber of pages"
-          (click)="getAll(pageNumber)">
-    {{ pageNumber }}
-  </button>
-</div>
 
 
 <!-- Modal delete pagi-->

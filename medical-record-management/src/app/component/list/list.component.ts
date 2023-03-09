@@ -8,27 +8,30 @@ import {MedicalRecordService} from '../../service/medical-record.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  totalPages: number;
-  pages: number[];
 
-  page = 0;
+  reason = '';
 
+  name = '';
+  page: number;
+ first = false;
   medicalRecordList: MedicalRecord[] = [];
 
   temp: MedicalRecord = {};
+
+  nums;
 
   constructor(private medicalRecordSever: MedicalRecordService) {
     this.getAll(this.page);
   }
 
   ngOnInit(): void {
+    this.getAll(0);
   }
 
   getAll(page: number) {
-    this.medicalRecordSever.getAll(page).subscribe(next => {
-      this.medicalRecordList = next.content;
-      this.totalPages = next.totalPages;
-      this.pages = Array.from({length: this.totalPages}, (_, i) => i + 1);
+    this.medicalRecordSever.getAll(this.reason, this.name, page).subscribe(next => {
+      this.medicalRecordList = next['content'];
+      console.log(next);
     });
   }
 
@@ -36,12 +39,6 @@ export class ListComponent implements OnInit {
     this.medicalRecordSever.delete(this.temp.id).subscribe(next => {
       this.getAll(this.page);
       alert('Xóa Thanh Công');
-    });
-  }
-
-  searchReason(reason: string) {
-    this.medicalRecordSever.searchReason(this.page, reason).subscribe(next => {
-      this.medicalRecordList = next;
     });
   }
 }

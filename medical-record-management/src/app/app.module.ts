@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './component/list/list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CreateComponent } from './component/create/create.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdateComponent } from './component/update/update.component';
 
 @NgModule({
@@ -16,12 +16,13 @@ import { UpdateComponent } from './component/update/update.component';
     CreateComponent,
     UpdateComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
